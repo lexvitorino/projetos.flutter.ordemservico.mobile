@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:osmobile/app/app.controller.dart';
 import 'package:osmobile/app/app.widget.dart';
-import 'package:osmobile/app/pages/authentication/auth-signin/auth-signin.module.dart';
 import 'package:osmobile/app/pages/authentication/authentication.controller.dart';
+import 'package:osmobile/app/pages/authentication/authentication.module.dart';
 import 'package:osmobile/app/pages/authentication/repositories/interfaces/session.interface.dart';
+import 'package:osmobile/app/pages/authentication/repositories/interfaces/subscriber.interface.dart';
 import 'package:osmobile/app/pages/authentication/repositories/session.repository.dart';
+import 'package:osmobile/app/pages/authentication/repositories/subscriber.repository.dart';
 import 'package:osmobile/app/pages/home/home.controller.dart';
 import 'package:osmobile/app/pages/home/home.module.dart';
 import 'package:osmobile/app/pages/splash/splash.page.dart';
@@ -23,13 +24,16 @@ class AppModule extends MainModule {
         Bind<IClientHttp>((i) => ClientHttpRepository()),
         Bind<ILocalStorage>((i) => SharedLocalStorageService()),
         Bind<ISession>((i) => SessionRepository()),
+        Bind<ISubscriber>((i) => SubscriberRepository()),
         Bind((i) => AuthenticationController()),
       ];
 
   @override
   List<Router> get routers => [
         Router('/', child: (_, args) => SplashPage()),
-        Router('/signin', module: AuthSigninModule()),
+        Router('/authentication',
+            module: AuthenticationModule(),
+            transition: TransitionType.noTransition),
         Router('/home', module: HomeModule()),
       ];
 

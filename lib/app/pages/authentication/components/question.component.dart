@@ -27,8 +27,7 @@ class QuestionComponent extends StatelessWidget {
           child: Text(
             labelResponse,
             style: TextStyle(
-              color: Color(0xffA09C9C),
-              fontWeight: FontWeight.w800,
+              color: Color(0xff000000),
               fontSize: 14,
             ),
           ),

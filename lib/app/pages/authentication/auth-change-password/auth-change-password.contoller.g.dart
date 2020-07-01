@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'auth-signin.contoller.dart';
+part of 'auth-change-password.contoller.dart';
 
 // **************************************************************************
 // StoreGenerator
@@ -8,8 +8,9 @@ part of 'auth-signin.contoller.dart';
 
 // ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic
 
-mixin _$AuthSigninController on _AuthSigninController, Store {
-  final _$sessionModelAtom = Atom(name: '_AuthSigninController.sessionModel');
+mixin _$AuthChangePasswordController on _AuthChangePasswordController, Store {
+  final _$sessionModelAtom =
+      Atom(name: '_AuthChangePasswordController.sessionModel');
 
   @override
   SessionModel get sessionModel {
@@ -24,7 +25,8 @@ mixin _$AuthSigninController on _AuthSigninController, Store {
     });
   }
 
-  final _$errorModelAtom = Atom(name: '_AuthSigninController.errorModel');
+  final _$errorModelAtom =
+      Atom(name: '_AuthChangePasswordController.errorModel');
 
   @override
   ErrorModel get errorModel {
@@ -39,18 +41,14 @@ mixin _$AuthSigninController on _AuthSigninController, Store {
     });
   }
 
-  final _$logInAsyncAction = AsyncAction('_AuthSigninController.logIn');
+  final _$changePasswordAsyncAction =
+      AsyncAction('_AuthChangePasswordController.changePassword');
 
   @override
-  Future<dynamic> logIn(String email, String password) {
-    return _$logInAsyncAction.run(() => super.logIn(email, password));
-  }
-
-  final _$logOutAsyncAction = AsyncAction('_AuthSigninController.logOut');
-
-  @override
-  Future<dynamic> logOut() {
-    return _$logOutAsyncAction.run(() => super.logOut());
+  Future<dynamic> changePassword(
+      String email, String password, String repassword, String newpassword) {
+    return _$changePasswordAsyncAction.run(
+        () => super.changePassword(email, password, repassword, newpassword));
   }
 
   @override

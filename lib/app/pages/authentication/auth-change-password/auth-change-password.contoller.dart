@@ -4,11 +4,12 @@ import 'package:osmobile/app/pages/authentication/authentication.controller.dart
 import 'package:osmobile/app/pages/authentication/models/session.model.dart';
 import 'package:osmobile/app/shared/models/error.model.dart';
 
-part 'auth-signin.contoller.g.dart';
+part 'auth-change-password.contoller.g.dart';
 
-class AuthSigninController = _AuthSigninController with _$AuthSigninController;
+class AuthChangePasswordController = _AuthChangePasswordController
+    with _$AuthChangePasswordController;
 
-abstract class _AuthSigninController with Store {
+abstract class _AuthChangePasswordController with Store {
   AuthenticationController authentication = Modular.get();
 
   @observable
@@ -17,25 +18,21 @@ abstract class _AuthSigninController with Store {
   @observable
   ErrorModel errorModel;
 
-  _AuthSigninController() {
+  _AuthChangePasswordController() {
     errorModel = ErrorModel();
   }
 
   @action
-  Future logIn(String email, String password) async {
+  Future changePassword(String email, String password, String repassword,
+      String newpassword) async {
     try {
-      sessionModel = await authentication.logIn(email, password);
+      sessionModel = await authentication.changePassword(
+          email, password, repassword, newpassword);
       if (sessionModel != null) {
-        Modular.to.pushReplacementNamed('/home');
+        Modular.to.pushReplacementNamed('/authentication/signin');
       }
     } catch (e) {
       errorModel = ErrorModel(errors: e);
     }
-  }
-
-  @action
-  Future logOut() async {
-    await authentication.logOut();
-    Modular.to.pushReplacementNamed('/authentication/signin');
   }
 }

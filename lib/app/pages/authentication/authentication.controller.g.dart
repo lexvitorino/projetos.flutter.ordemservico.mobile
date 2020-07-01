@@ -47,6 +47,34 @@ mixin _$AuthenticationController on _AuthenticationControllerBase, Store {
     return _$logInAsyncAction.run(() => super.logIn(email, password));
   }
 
+  final _$signUpAsyncAction =
+      AsyncAction('_AuthenticationControllerBase.signUp');
+
+  @override
+  Future<dynamic> signUp(
+      String name, String email, String password, String repassword) {
+    return _$signUpAsyncAction
+        .run(() => super.signUp(name, email, password, repassword));
+  }
+
+  final _$resetPasswordAsyncAction =
+      AsyncAction('_AuthenticationControllerBase.resetPassword');
+
+  @override
+  Future<dynamic> resetPassword(String email) {
+    return _$resetPasswordAsyncAction.run(() => super.resetPassword(email));
+  }
+
+  final _$changePasswordAsyncAction =
+      AsyncAction('_AuthenticationControllerBase.changePassword');
+
+  @override
+  Future<dynamic> changePassword(
+      String email, String password, String newpassword, String repassword) {
+    return _$changePasswordAsyncAction.run(
+        () => super.changePassword(email, password, newpassword, repassword));
+  }
+
   final _$logOutAsyncAction =
       AsyncAction('_AuthenticationControllerBase.logOut');
 

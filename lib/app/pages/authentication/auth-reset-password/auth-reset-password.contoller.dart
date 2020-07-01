@@ -4,11 +4,12 @@ import 'package:osmobile/app/pages/authentication/authentication.controller.dart
 import 'package:osmobile/app/pages/authentication/models/session.model.dart';
 import 'package:osmobile/app/shared/models/error.model.dart';
 
-part 'auth-signin.contoller.g.dart';
+part 'auth-reset-password.contoller.g.dart';
 
-class AuthSigninController = _AuthSigninController with _$AuthSigninController;
+class AuthResetPasswordController = _AuthResetPasswordController
+    with _$AuthResetPasswordController;
 
-abstract class _AuthSigninController with Store {
+abstract class _AuthResetPasswordController with Store {
   AuthenticationController authentication = Modular.get();
 
   @observable
@@ -17,25 +18,20 @@ abstract class _AuthSigninController with Store {
   @observable
   ErrorModel errorModel;
 
-  _AuthSigninController() {
+  _AuthResetPasswordController() {
     errorModel = ErrorModel();
   }
 
   @action
-  Future logIn(String email, String password) async {
+  Future resetPassword(String email) async {
     try {
-      sessionModel = await authentication.logIn(email, password);
+      sessionModel = await authentication.resetPassword(email);
       if (sessionModel != null) {
-        Modular.to.pushReplacementNamed('/home');
+        Modular.to
+            .pushReplacementNamed('/authentication/changePassword/' + email);
       }
     } catch (e) {
       errorModel = ErrorModel(errors: e);
     }
-  }
-
-  @action
-  Future logOut() async {
-    await authentication.logOut();
-    Modular.to.pushReplacementNamed('/authentication/signin');
   }
 }

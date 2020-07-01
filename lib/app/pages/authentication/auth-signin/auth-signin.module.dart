@@ -10,7 +10,7 @@ class AuthSigninModule extends ChildModule {
 
   @override
   List<Router> get routers => [
-        Router('', child: (_, args) => AuthSigninPage()),
+        Router('/', child: (_, args) => AuthSigninPage()),
       ];
 
   static Inject get to => Inject<AuthSigninModule>.of();

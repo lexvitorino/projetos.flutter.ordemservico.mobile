@@ -1,5 +1,8 @@
 import 'package:dio/dio.dart';
+import 'package:osmobile/app/shared/repositories/interceptors/client-http.interceptor.dart';
 import 'package:osmobile/app/shared/repositories/interfaces/client-http.interface.dart';
+
+import '../constants.dart';
 
 class ClientHttpRepository implements IClientHttp {
   Dio dio;
@@ -7,11 +10,34 @@ class ClientHttpRepository implements IClientHttp {
   ClientHttpRepository() {
     if (dio == null) {
       BaseOptions options = new BaseOptions(
-        baseUrl: 'http://10.0.2.2:3334',
-        connectTimeout: 60 * 1000,
-        receiveTimeout: 60 * 1000,
+        baseUrl: BASE_URL,
+        connectTimeout: 60 * 500,
+        receiveTimeout: 60 * 500,
       );
       dio = new Dio(options);
+      dio.interceptors.add(HttpClientInterceptor());
+    }
+  }
+
+  fromJson(Map<String, dynamic> json) {
+    return json['error'];
+  }
+
+  List<String> throwCustomError(DioError e) {
+    List<String> errors = [];
+    if (e.response != null) {
+      errors.add(fromJson(e.response.data));
+      return errors;
+    } else if (e.type == DioErrorType.CONNECT_TIMEOUT) {
+      errors.add(e.message);
+      return errors;
+    } else if (e.type == DioErrorType.RECEIVE_TIMEOUT) {
+      errors.add(e.message);
+      return errors;
+    } else {
+      print(e);
+      errors.add("Internal Server Error");
+      return errors;
     }
   }
 
@@ -21,16 +47,7 @@ class ClientHttpRepository implements IClientHttp {
       var response = await dio.get(url);
       return response.data;
     } on DioError catch (e) {
-      if (e.type == DioErrorType.CONNECT_TIMEOUT) {
-        print(e);
-        return null;
-      } else if (e.type == DioErrorType.RECEIVE_TIMEOUT) {
-        print(e);
-        return null;
-      } else {
-        print(e);
-        return null;
-      }
+      throw (throwCustomError(e));
     }
   }
 
@@ -40,13 +57,7 @@ class ClientHttpRepository implements IClientHttp {
       var response = await dio.post(url, data: data);
       return response.data;
     } on DioError catch (e) {
-      if (e.type == DioErrorType.CONNECT_TIMEOUT) {
-        print(e);
-      } else if (e.type == DioErrorType.RECEIVE_TIMEOUT) {
-        print(e);
-      } else {
-        print(e);
-      }
+      throw (throwCustomError(e));
     }
   }
 
@@ -56,13 +67,7 @@ class ClientHttpRepository implements IClientHttp {
       var response = await dio.put(url, data: data);
       return response.data;
     } on DioError catch (e) {
-      if (e.type == DioErrorType.CONNECT_TIMEOUT) {
-        print(e);
-      } else if (e.type == DioErrorType.RECEIVE_TIMEOUT) {
-        print(e);
-      } else {
-        print(e);
-      }
+      throw (throwCustomError(e));
     }
   }
 
@@ -72,13 +77,7 @@ class ClientHttpRepository implements IClientHttp {
       var response = await dio.delete(url, data: data);
       return response.data;
     } on DioError catch (e) {
-      if (e.type == DioErrorType.CONNECT_TIMEOUT) {
-        print(e);
-      } else if (e.type == DioErrorType.RECEIVE_TIMEOUT) {
-        print(e);
-      } else {
-        print(e);
-      }
+      throw (throwCustomError(e));
     }
   }
 }
