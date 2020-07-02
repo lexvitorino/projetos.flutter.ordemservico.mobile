@@ -29,7 +29,7 @@ abstract class _AuthChangePasswordController with Store {
       sessionModel = await authentication.changePassword(
           email, password, repassword, newpassword);
       if (sessionModel != null) {
-        Modular.to.pushReplacementNamed('/authentication/signin');
+        Modular.to.pushReplacementNamed('/authentication');
       }
     } catch (e) {
       errorModel = ErrorModel(errors: e);

@@ -1,4 +1,3 @@
-import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:osmobile/app/pages/authentication/auth-change-password/auth-change-password.contoller.dart';
 import 'package:osmobile/app/pages/authentication/auth-change-password/auth-change-password.page.dart';
@@ -23,8 +22,7 @@ class AuthenticationModule extends ChildModule {
 
   @override
   List<Router> get routers => [
-        Router('/', child: (_, args) => Container()),
-        Router('/signin', child: (_, args) => AuthSigninPage()),
+        Router('/', child: (_, args) => AuthSigninPage()),
         Router('/signup', child: (_, args) => AuthSignupPage()),
         Router('/resetPassword', child: (_, args) => AuthResetPasswordPage()),
         Router('/changePassword/:email',

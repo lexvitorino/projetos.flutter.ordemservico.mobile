@@ -1,7 +1,6 @@
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:mobx/mobx.dart';
 import 'package:osmobile/app/pages/authentication/models/session.model.dart';
-import 'package:osmobile/app/pages/authentication/models/subscriber.model.dart';
 import 'package:osmobile/app/pages/authentication/repositories/interfaces/session.interface.dart';
 import 'package:osmobile/app/pages/authentication/repositories/interfaces/subscriber.interface.dart';
 import 'package:osmobile/app/pages/authentication/repositories/session.repository.dart';

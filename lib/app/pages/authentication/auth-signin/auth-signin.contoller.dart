@@ -36,6 +36,6 @@ abstract class _AuthSigninController with Store {
   @action
   Future logOut() async {
     await authentication.logOut();
-    Modular.to.pushReplacementNamed('/authentication/signin');
+    Modular.to.pushReplacementNamed('/authentication');
   }
 }

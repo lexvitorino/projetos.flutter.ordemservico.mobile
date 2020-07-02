@@ -93,7 +93,7 @@ class AuthResetPasswordStatePage
                   labelQuestion: 'Não tem uma conta?',
                   labelResponse: 'Criar conta',
                   onPressed: () => {
-                    Modular.to.popAndPushNamed('/authentication/signup'),
+                    Modular.to.pushReplacementNamed('/authentication/signup'),
                   },
                 ),
                 SizedBox(

@@ -8,9 +8,12 @@ import 'package:osmobile/app/pages/authentication/repositories/interfaces/sessio
 import 'package:osmobile/app/pages/authentication/repositories/interfaces/subscriber.interface.dart';
 import 'package:osmobile/app/pages/authentication/repositories/session.repository.dart';
 import 'package:osmobile/app/pages/authentication/repositories/subscriber.repository.dart';
+import 'package:osmobile/app/pages/customer/customer.page.dart';
 import 'package:osmobile/app/pages/home/home.controller.dart';
 import 'package:osmobile/app/pages/home/home.module.dart';
+import 'package:osmobile/app/pages/service-order/service-order.page.dart';
 import 'package:osmobile/app/pages/splash/splash.page.dart';
+import 'package:osmobile/app/pages/user/user.page.dart';
 import 'package:osmobile/app/shared/repositories/client-http.repository.dart';
 import 'package:osmobile/app/shared/repositories/interfaces/client-http.interface.dart';
 import 'package:osmobile/app/shared/services/interfaces/local-storage.interface.dart';
@@ -35,6 +38,9 @@ class AppModule extends MainModule {
             module: AuthenticationModule(),
             transition: TransitionType.noTransition),
         Router('/home', module: HomeModule()),
+        Router('/user', child: (_, args) => UserPage()),
+        Router('/customer', child: (_, args) => CustomerPage()),
+        Router('/serviceOrder', child: (_, args) => ServiceOrderPage()),
       ];
 
   @override

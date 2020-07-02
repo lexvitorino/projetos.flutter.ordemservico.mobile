@@ -10,6 +10,6 @@ abstract class _HomeController with Store {
   @action
   logOut() async {
     await Modular.get<AuthenticationController>().logOut();
-    Modular.to.pushReplacementNamed('/');
+    Modular.to.pushReplacementNamed('/authentication');
   }
 }

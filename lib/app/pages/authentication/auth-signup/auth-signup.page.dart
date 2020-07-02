@@ -139,7 +139,7 @@ class AuthSignupStatePage
                   labelQuestion: 'Já tem uma conta?',
                   labelResponse: 'Logar',
                   onPressed: () => {
-                    Modular.to.pop('/authentication/signin'),
+                    Modular.to.pushReplacementNamed('/authentication'),
                   },
                 ),
                 SizedBox(

@@ -110,7 +110,8 @@ class AuthSigninStatePage
                       labelQuestion: 'Esqueci minha senha?',
                       labelResponse: 'Resetar Senha',
                       onPressed: () => {
-                        Modular.to.pushNamed('/authentication/resetPassword')
+                        Modular.to.pushReplacementNamed(
+                            '/authentication/resetPassword')
                       },
                     ),
                     SizedBox(
@@ -120,7 +121,8 @@ class AuthSigninStatePage
                       labelQuestion: 'Não tenho conta?',
                       labelResponse: 'Criar conta',
                       onPressed: () => {
-                        Modular.to.pushNamed('/authentication/signup'),
+                        Modular.to
+                            .pushReplacementNamed('/authentication/signup'),
                       },
                     ),
                     SizedBox(
