@@ -29,7 +29,6 @@ abstract class _AuthenticationControllerBase with Store {
 
   _AuthenticationControllerBase() {
     _session.getToken().then((value) {
-      sessionModel = SessionModel(token: value);
       setToken(value);
     });
   }

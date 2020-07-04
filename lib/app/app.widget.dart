@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
+import 'package:osmobile/app/theme/ligth.theme.dart';
 
 class AppWidget extends StatelessWidget {
   @override
@@ -7,11 +8,10 @@ class AppWidget extends StatelessWidget {
     return MaterialApp(
       navigatorKey: Modular.navigatorKey,
       title: 'Flutter Slidy',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
+      theme: lightTheme(),
       initialRoute: '/',
       onGenerateRoute: Modular.generateRoute,
+      debugShowCheckedModeBanner: false,
     );
   }
 }

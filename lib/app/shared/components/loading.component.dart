@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
 
-class UserPage extends StatelessWidget {
+class LoadingComponent extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text("UserPage"),
+      body: Center(
+        child: CircularProgressIndicator(),
       ),
-      body: Text("UserPage"),
     );
   }
 }

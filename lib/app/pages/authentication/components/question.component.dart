@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:osmobile/app/theme/colors.dart';
 
 class QuestionComponent extends StatelessWidget {
-  String labelQuestion;
-  String labelResponse;
-  Function onPressed;
+  final String labelQuestion;
+  final String labelResponse;
+  final Function onPressed;
 
   QuestionComponent({this.labelQuestion, this.labelResponse, this.onPressed});
 
@@ -15,7 +16,7 @@ class QuestionComponent extends StatelessWidget {
         Text(
           labelQuestion,
           style: TextStyle(
-            color: Color(0xffA09C9C),
+            color: neutralColor,
             fontWeight: FontWeight.w400,
             fontSize: 14,
           ),
@@ -27,7 +28,7 @@ class QuestionComponent extends StatelessWidget {
           child: Text(
             labelResponse,
             style: TextStyle(
-              color: Color(0xff000000),
+              color: evidenceColor,
               fontSize: 14,
             ),
           ),

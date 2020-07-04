@@ -6,6 +6,7 @@ import 'package:osmobile/app/pages/authentication/components/logo.component.dart
 import 'package:osmobile/app/pages/authentication/components/question.component.dart';
 import 'package:osmobile/app/pages/authentication/components/submit.component.dart';
 import 'package:osmobile/app/shared/dialogs/modal.dialog.dart';
+import 'package:osmobile/app/theme/colors.dart';
 
 class AuthSignupPage extends StatefulWidget {
   @override
@@ -23,7 +24,7 @@ class AuthSignupStatePage
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xff4680FF),
+      backgroundColor: primaryColor,
       body: SingleChildScrollView(
         child: Container(
           padding: EdgeInsets.fromLTRB(30, 80, 30, 0),

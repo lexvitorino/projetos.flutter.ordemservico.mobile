@@ -1,10 +1,11 @@
 import 'package:flutter_modular/flutter_modular.dart';
+import 'package:osmobile/app/pages/home/home.controller.dart';
 import 'package:osmobile/app/pages/home/home.page.dart';
 
 class HomeModule extends ChildModule {
   @override
   List<Bind> get binds => [
-        // Bind((i) => HomeController()),
+        Bind((i) => HomeController()),
       ];
 
   @override

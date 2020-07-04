@@ -5,6 +5,7 @@ import 'package:osmobile/app/pages/authentication/components/input.component.dar
 import 'package:osmobile/app/pages/authentication/components/logo.component.dart';
 import 'package:osmobile/app/pages/authentication/components/submit.component.dart';
 import 'package:osmobile/app/shared/dialogs/modal.dialog.dart';
+import 'package:osmobile/app/theme/colors.dart';
 
 class AuthChangePasswordPage extends StatefulWidget {
   final String email;
@@ -25,7 +26,7 @@ class AuthChangePasswordStatePage
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xff4680FF),
+      backgroundColor: primaryColor,
       body: SingleChildScrollView(
         child: Container(
           padding: EdgeInsets.fromLTRB(30, 80, 30, 0),
@@ -60,7 +61,7 @@ class AuthChangePasswordStatePage
                         decoration: BoxDecoration(
                           border: Border(
                             bottom: BorderSide(
-                              color: Color(0xffA09C9C),
+                              color: neutralColor,
                               width: 1.0,
                             ),
                           ),

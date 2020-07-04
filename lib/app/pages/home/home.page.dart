@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
+import 'package:osmobile/app/shared/components/avatar.component.dart';
 import 'package:osmobile/app/pages/home/compoenents/total-chart.component.dart';
 import 'package:osmobile/app/pages/home/home.controller.dart';
+import 'package:osmobile/app/theme/colors.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -27,12 +30,12 @@ class _HomePageState extends ModularState<HomePage, HomeController> {
       drawer: Drawer(
         child: ListView(
           children: <Widget>[
-            UserAccountsDrawerHeader(
-              accountName: Text('Alex Sousa'),
-              accountEmail: Text('contato@mi7dev.com.br'),
-              currentAccountPicture: CircleAvatar(
-                backgroundImage: NetworkImage(
-                    "http://mi7dev.com.br/wp-content/uploads/2020/05/cropped-IMG-20200225-WA0082-1-150x150.jpg"),
+            Observer(
+              builder: (_) => UserAccountsDrawerHeader(
+                accountName: Text(controller.sessionModel.name),
+                accountEmail: Text(controller.sessionModel.email),
+                currentAccountPicture:
+                    Image.asset("lib/app/assets/images/profile-picture.png"),
               ),
             ),
             ListTile(
@@ -75,7 +78,7 @@ class _HomePageState extends ModularState<HomePage, HomeController> {
                 topicIcon: Icons.insert_chart,
                 title: "% change",
                 typeIconCard: Icons.show_chart,
-                backgroundColor: 0xffFFBA57,
+                backgroundColor: warningColor,
               ),
               TotalChart(
                 value: '290+',
@@ -83,7 +86,7 @@ class _HomePageState extends ModularState<HomePage, HomeController> {
                 topicIcon: Icons.insert_drive_file,
                 title: "% change",
                 typeIconCard: Icons.show_chart,
-                backgroundColor: 0xff9CCC65,
+                backgroundColor: successColor,
               ),
               TotalChart(
                 value: '145',
@@ -91,7 +94,7 @@ class _HomePageState extends ModularState<HomePage, HomeController> {
                 topicIcon: Icons.insert_invitation,
                 title: "% change",
                 typeIconCard: Icons.show_chart,
-                backgroundColor: 0xff4680FF,
+                backgroundColor: infoColor,
               ),
             ],
           ),

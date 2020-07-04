@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:osmobile/app/theme/colors.dart';
 
 class SubmitComponent extends StatelessWidget {
   String labelButton;
@@ -12,7 +13,7 @@ class SubmitComponent extends StatelessWidget {
       width: double.infinity,
       margin: EdgeInsets.only(left: 15, right: 15),
       decoration: BoxDecoration(
-        color: Theme.of(context).primaryColor,
+        color: primaryColor,
         borderRadius: BorderRadius.all(
           Radius.circular(5),
         ),

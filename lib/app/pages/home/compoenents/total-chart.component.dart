@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:osmobile/app/theme/colors.dart';
 
 class TotalChart extends StatelessWidget {
   String value;
@@ -6,7 +7,7 @@ class TotalChart extends StatelessWidget {
   IconData topicIcon;
   String title;
   IconData typeIconCard;
-  int backgroundColor;
+  Color backgroundColor;
 
   TotalChart({
     this.value,
@@ -39,7 +40,7 @@ class TotalChart extends StatelessWidget {
                         Text(
                           value,
                           style: TextStyle(
-                            color: Color(backgroundColor),
+                            color: backgroundColor,
                             fontSize: 20,
                             fontWeight: FontWeight.w700,
                           ),
@@ -50,7 +51,7 @@ class TotalChart extends StatelessWidget {
                         Text(
                           description,
                           style: TextStyle(
-                            color: Color(0xffA09C9C),
+                            color: neutralColor,
                             fontSize: 20,
                           ),
                         ),
@@ -59,14 +60,14 @@ class TotalChart extends StatelessWidget {
                     Icon(
                       topicIcon,
                       size: 40,
-                      color: Color(backgroundColor),
+                      color: backgroundColor,
                     ),
                   ],
                 ),
               ),
               Container(
                 padding: EdgeInsets.fromLTRB(30, 20, 30, 20),
-                color: Color(backgroundColor),
+                color: backgroundColor,
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: <Widget>[
@@ -76,7 +77,7 @@ class TotalChart extends StatelessWidget {
                         Text(
                           title,
                           style: TextStyle(
-                            color: Color(0xffffffff),
+                            color: lightColor,
                             fontSize: 20,
                           ),
                         ),
@@ -84,7 +85,7 @@ class TotalChart extends StatelessWidget {
                     ),
                     Icon(
                       typeIconCard,
-                      color: Color(0xffffffff),
+                      color: lightColor,
                     ),
                   ],
                 ),

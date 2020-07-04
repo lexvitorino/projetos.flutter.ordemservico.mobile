@@ -13,7 +13,8 @@ import 'package:osmobile/app/pages/home/home.controller.dart';
 import 'package:osmobile/app/pages/home/home.module.dart';
 import 'package:osmobile/app/pages/service-order/service-order.page.dart';
 import 'package:osmobile/app/pages/splash/splash.page.dart';
-import 'package:osmobile/app/pages/user/user.page.dart';
+import 'package:osmobile/app/pages/user/user.controller.dart';
+import 'package:osmobile/app/pages/user/user.module.dart';
 import 'package:osmobile/app/shared/repositories/client-http.repository.dart';
 import 'package:osmobile/app/shared/repositories/interfaces/client-http.interface.dart';
 import 'package:osmobile/app/shared/services/interfaces/local-storage.interface.dart';
@@ -23,7 +24,6 @@ class AppModule extends MainModule {
   @override
   List<Bind> get binds => [
         Bind((i) => AppController()),
-        Bind((i) => HomeController()),
         Bind<IClientHttp>((i) => ClientHttpRepository()),
         Bind<ILocalStorage>((i) => SharedLocalStorageService()),
         Bind<ISession>((i) => SessionRepository()),
@@ -38,7 +38,7 @@ class AppModule extends MainModule {
             module: AuthenticationModule(),
             transition: TransitionType.noTransition),
         Router('/home', module: HomeModule()),
-        Router('/user', child: (_, args) => UserPage()),
+        Router('/user', module: UserModule()),
         Router('/customer', child: (_, args) => CustomerPage()),
         Router('/serviceOrder', child: (_, args) => ServiceOrderPage()),
       ];

@@ -5,6 +5,7 @@ import 'package:osmobile/app/shared/constants.dart';
 import 'package:osmobile/app/shared/repositories/client-http.repository.dart';
 import 'package:osmobile/app/shared/repositories/interfaces/client-http.interface.dart';
 import 'package:osmobile/app/shared/services/interfaces/local-storage.interface.dart';
+import 'package:osmobile/app/shared/services/jwt-decode.service.dart';
 import 'package:osmobile/app/shared/services/shared-local-storage.service.dart';
 
 class SessionRepository implements ISession {
@@ -20,6 +21,9 @@ class SessionRepository implements ISession {
       });
       final sessionModel = SessionModel.fromJson(json);
       if (sessionModel != null && sessionModel.token != "") {
+        final parseToken = SessionModel.fromJson(
+            JwtDecode.parseJwtPayLoad(sessionModel.token));
+        parseToken.token = sessionModel.token;
         await storage.put("token", sessionModel.token);
       }
       return sessionModel;
@@ -67,8 +71,10 @@ class SessionRepository implements ISession {
 
   @override
   Future getToken() async {
-    await storage.get(TOKEN).then((value) {
-      return value;
-    });
+    final token = await storage.get(TOKEN);
+    if (token == null) return null;
+    final parseToken = SessionModel.fromJson(JwtDecode.parseJwtPayLoad(token));
+    parseToken.token = token;
+    return parseToken;
   }
 }

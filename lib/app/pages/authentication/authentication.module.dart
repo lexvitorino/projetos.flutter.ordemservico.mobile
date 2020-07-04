@@ -7,7 +7,10 @@ import 'package:osmobile/app/pages/authentication/auth-signin/auth-signin.contol
 import 'package:osmobile/app/pages/authentication/auth-signin/auth-signin.page.dart';
 import 'package:osmobile/app/pages/authentication/auth-signup/auth-signup.contoller.dart';
 import 'package:osmobile/app/pages/authentication/auth-signup/auth-signup.page.dart';
+import 'package:osmobile/app/pages/authentication/authentication.controller.dart';
+import 'package:osmobile/app/pages/authentication/repositories/interfaces/session.interface.dart';
 import 'package:osmobile/app/pages/authentication/repositories/interfaces/subscriber.interface.dart';
+import 'package:osmobile/app/pages/authentication/repositories/session.repository.dart';
 import 'package:osmobile/app/pages/authentication/repositories/subscriber.repository.dart';
 
 class AuthenticationModule extends ChildModule {
@@ -18,6 +21,8 @@ class AuthenticationModule extends ChildModule {
         Bind((i) => AuthResetPasswordController()),
         Bind((i) => AuthChangePasswordController()),
         Bind<ISubscriber>((i) => SubscriberRepository()),
+        Bind<ISession>((i) => SessionRepository()),
+        Bind((i) => AuthenticationController()),
       ];
 
   @override
